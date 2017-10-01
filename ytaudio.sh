@@ -10,7 +10,7 @@
 #         NOTES: 
 #        AUTHOR: C Hawley
 #       CREATED: 2015-10
-#      REVISION: Fri 06 Nov 2015 08:00:41 PM EST
+#      REVISION: Sun 01 Oct 2017 06:50:26 PM EDT
 #
 #===============================================================================
 
@@ -38,15 +38,22 @@ if [ ! $(command -v mplayer) ]; then
 	exit 1
 fi
 
-# Check for youtube-dl
-if [ ! $(command -v youtube-dl) ]; then
-    if [ ! $(command -v curl) ]; then
-	    echo "Curl not found.  Exiting"
-	    exit 1
-    fi
-	echo "installing youtube-dl from https://rg3.github.io/youtube-dl/download.html"
-	sudo curl https://yt-dl.org/downloads/2015.10.09/youtube-dl -o /usr/local/bin/youtube-dl
-	sudo chmod a+rx /usr/local/bin/youtube-dl
+# Check for curl
+if [ ! $(command -v curl) ]; then
+        echo "Curl not found.  Exiting"
+        exit 1
+fi
+
+echo "Install/update youtube-dl utility? [Y/N] (Y)"
+read answer
+if [ "${answer}" = "Y" ] || [ "${answer}" = "y" ]; then
+        echo "installing youtube-dl from https://rg3.github.io/youtube-dl/download.html"
+        echo ""
+	sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+        sudo chmod a+rx /usr/local/bin/youtube-dl
+	echo "OK.  Ready to proceed."
+	echo ""
+	echo ""
 fi
 
 yfullfilename="%(title)s.%(ext)s"
@@ -76,7 +83,8 @@ else
 	echo "normalize-audio not installed.  Not normalizing"
 fi
 
-echo "------------"
-echo "Cleaning up."
+echo "-----------------------"
+echo "All done.  Cleaning up."
 rm -f audiodump.wav
 rm -f "$yfile"
+
