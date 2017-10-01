@@ -1,9 +1,8 @@
-<img style="float:right; padding 0px 0px 10px 10px;" alt="linux" src="http://i.imgur.com/DhIX0Vn.png"</img>
 # ytaudio
 
 Created: Fri 06 Nov 2015 08:04:58 PM EST
 
-Updated: Fri 06 Nov 2015 08:19:31 PM EST
+Updated: Sun 01 Oct 2017 06:59:35 PM EDT
 
 ## Summary
 
@@ -16,7 +15,7 @@ USAGE:
     ./ytaudio.sh <youtube_url>
 
 The script will then go out and grab the available audio containers from the video.  Choose the one you want to convert
-(HINT: I try to pick the highest bitrate audio format - usually 141).  
+(HINT: I try to pick the highest bitrate audio format - usually 140).  
 
 It will then download the audio, convert it to VBR MP3 and normalize it.
 
